@@ -1,20 +1,20 @@
-const $answer = document.querySelector('.answer_zone');
-const $input = document.querySelector('.input_zone');
-const $result = document.querySelector('.result_zone');
-const $btn = document.querySelector('.btn_zone');
+const $answer = document.querySelector('.answer-zone');
+const $input = document.querySelector('.input-zone');
+const $result = document.querySelector('.result-zone');
+const $btn = document.querySelector('.btn-zone');
 
 
-const baseball = {
-  limit: 10,
-  digit: 4,
-  hit: 0,
-  end: false
+let limit = 10;
+let digit = 4;
+let hit = 0;
+let end = false;
+let answer = [];
+
+function gameStart() {
+  randomNum()
 }
 
-let { limit, digit, hit, end } = baseball
-
-
-const randomNum = () => {
+function randomNum() {
   let num = []
   let random = ''
 
@@ -22,15 +22,18 @@ const randomNum = () => {
     num[i] = parseInt(Math.random() * 10)
     random += num[i]
   }
-  return random
+
+  answer.push([random])
 }
 
 
-const onHit = (inputNumber) => {
+// 시도 횟수 및 사용자 입력숫자 알림
+function onHit(inputNumber) {
   return `<span>${hit}차 </span> ${inputNumber}`
 }
 
-const getStrike = (inputNumber, random) => {
+// STRIKE
+function getStrike(inputNumber, random) {
   let strike = 0
   const nums = inputNumber.split('')
 
@@ -42,28 +45,29 @@ const getStrike = (inputNumber, random) => {
   return strike
 }
 
-const getBall = (inputNumber, random) => {
+// BALL
+function getBall(inputNumber, random) {
   const nums = inputNumber.split('')
   const rans = random.split('')
 
-  const ballnum = nums.concat(rans)
-
-  const findballs = ballnum => ballnum.filter((item, index) => ballnum.indexOf(item) !== index)
-  const ball = findballs.length
+  const ball = 
+  nums.filter(item=>rans.includes(item))
   
-  return ball
+  return ball.length
 }
 
+$btn.addEventListener('click', () => {
 
-$btn.addEventListener('click', ()=>{
   const inputNumber = $input.value
-  const random = randomNum()
+  const random = answer[0].toString()
   console.log(random)
 
-  
   if (inputNumber !== random) {
-    hit ++
+    hit++
     $result.innerHTML += `<br><span>${onHit(inputNumber)} STRIKE: ${getStrike(inputNumber, random)} BALL: ${getBall(inputNumber,random)}</span></br>`
   }
-
 })
+
+window.onload = () => {
+  gameStart()
+}

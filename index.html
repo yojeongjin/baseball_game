@@ -10,18 +10,34 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <div id="container">
+    <div class="inner">
 
-  <main>
-    <section>
-      <div class="answer_zone">정답은?</div>
-      <form onsubmit="return false">
-        <label for="question"></label>
-        <input type="number" id="question" name="question" min="0" max="9999" class="input_zone" />
-        <button class="btn_zone">도전</button>
-      </form>
-      <div class="result_zone">결과</div>
-    </section>
-  </main>
+      <header>
+        <nav class="menu">
+          <div class="nav-info">💬 </div>
+          <div class="nav-restart">🔄</div>
+          <div class="nav-close">✖️</div>
+        </nav>
+      </header>
+  
+      <main>
+        <section>
+          <div class="answer-zone">
+            <img src="./asstes/Group 15.png" alt="ball-icon" class="ball-icon">
+            SCORE BOARD
+          </div>
+          <form>
+            <label for="question"></label>
+            <input type="number" id="question" name="question" min="0" max="9999" class="input-zone" />
+          </form>
+          <button class="btn-zone">도전</button>
+          <div class="result-zone">결과</div>
+        </section>
+      </main>
+
+    </div>
+  </div>
 
   <script src="script.js"></script>  
 </body>
