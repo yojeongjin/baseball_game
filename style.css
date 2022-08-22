@@ -24,7 +24,7 @@
   width: 100%;
   height: 100%;
   background: url(/asstes/back-img.png) no-repeat 0 0/cover;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .inner {
@@ -44,16 +44,17 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  background-color: #333;
 }
 
 .nav-info {
   margin-right: 200px;
+  padding: 15px
 }
 
 .nav-restart {
   margin-right: 10px;
 }
-
 
 .nav-close {
   justify-content: flex-end;
@@ -65,18 +66,26 @@ section {
   align-items: center;
   justify-content: center;
   position: relative;
-  border: 2px solid black;
+  /* background-color: #333399; */
+  padding: 15px;
+  width: 500px;
+  height: 300px;
 }
 
 .answer-zone {
   display: flex;
   text-align: center;
-  font-size: 36px;
-  color: #333;
+  font-size: 32px;
+  font-weight: 600;
+  background: linear-gradient(to bottom, #CC6600, #FFCC33);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .answer-zone .ball-icon {
   margin-right: 14px;
+  width: 24px;
+  height: 24px;
 }
 
 form {
@@ -84,18 +93,39 @@ form {
   margin-top: 30px;
 }
 
+.input-zone {
+  width: 250px;
+  height: 25px;
+  margin-right: 20px;
+  border-radius: 12px;
+  font-family: 'DungGeunMo';
+  text-align: center;
+}
+
+.btn-zone {
+  background-color: #FFF;
+  border-radius: 9px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 17px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 10px;
+  font-family: 'DungGeunMo';
+}
+
+.btn-zone:hover, .btn-zone:focus {
+  transform: scale(1.1);
+  transition: transform 0.5;
+}
+
 .result-zone {
   margin-top: 30px;
   font-size: 20px;
-  background: #333;
   padding: 30px;
   text-align: center;
   color: #fff;
-}
-
-
-.modal-alert {
-  display: none;
 }
 
 .modal-content {
@@ -103,7 +133,7 @@ form {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
+  display: none;
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -116,9 +146,86 @@ form {
   border: 1px solid #333;
   border-radius: 5px;
   background-color: #FFF;
+  box-shadow: 5px 5px;
 }
+
+#modal-alert-close {
+  background-color: #FFF;
+  border-radius: 9px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 10px;
+  font-family: 'DungGeunMo';
+  box-shadow: 1px 1px 1px 1px gray;
+}
+
+#modal-alert-close:hover, #modal-alert-close:focus {
+  transform: scale(1.2);
+  transition: transform 0.5;
+}
+
+.modal-info {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  height: 430px;
+  padding: 20px;
+  z-index: 9999;
+  text-align: center;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #FFF;
+  background: url(/asstes/4F0FF3B3-A462-40FE-A146-4C825064163B.JPEG);
+}
+.info-title-content {
+  font-size: 25px;
+  color: rgb(83, 244, 19);
+  padding: 10px 10px;
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+}
+
+.info-game-rule{
+  margin-top: 25px;
+  color: aqua;
+  line-height: 1.2;
+}
+
+.info-desc {
+  margin-top: 30px;
+  font-weight: lighter;
+}
+
+.info-close {
+  border: 6px double purple;
+  margin-top: 15px;
+  padding: 12px 0 12px 0;
+  font-size: 30px;
+  color: rgb(205, 71, 205);
+}
+
+.info-close:hover, .info-close:focus {
+  background-color: beige;
+}
+
+li {
+  color: #fff;
+}
+
 
 .show {
   display: block;
   opacity: 1;
 }
+

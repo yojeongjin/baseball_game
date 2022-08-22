@@ -30,7 +30,7 @@ function randomNum() {
 
 // 시도 횟수 및 사용자 입력숫자 알림
 function onHit(inputNumber) {
-  return `<span>${hit}차 </span> ${inputNumber}`
+  return `<span>${hit}차 </span><img src="./asstes/baseball-player.png" width="19px" height="19px"/> ${inputNumber}`
 }
 
 // 중복 숫자 확인
@@ -39,13 +39,18 @@ function isDuplicate(inputNumber) {
 }
 
 // alert 메시지 출력 
-const modalAlert = document.querySelector('.modal-alert');
+const modalAlert = document.querySelector('.modal-content');
 const titleAlert = document.querySelector('.modal-alert-title');
 
 function showAlert(alertMsg) {
   titleAlert.innerHTML = `<span>📢 ${alertMsg}</span>`
 
   modalAlert.classList.add('show')
+}
+
+// 유효성 확인 
+function isCorrect(inputNumber, random) {
+  return inputNumber === random
 }
 
 // STRIKE
@@ -94,19 +99,45 @@ function initGame(e) {
   } else  if(inputNumber !== random) {
     hit++
     $result.innerHTML += `<br><span>${onHit(inputNumber)} STRIKE: ${getStrike(inputNumber, random)} BALL: ${getBall(inputNumber,random)}</span></br>`
+    
+    if (limit <= hit && !isCorrect(inputNumber, random)) {
+      showAlert('쓰리아웃!')
+      end = true
+    }
   }
+
+  $input.value = ''
+  $input.focus()
+
+
+  
 }
+
+// info-modal창 열기
+const navinfo = document.querySelector('.nav-info');
+const modalInfo = document.querySelector('.modal-info')
+
+navinfo.addEventListener('click', () => {
+  modalInfo.classList.add('show')
+})
+
+
 
 
 // alert창 닫기
-const modalCloseBtn = document.getElementById("modal-alert-close")
+const modalCloseBtn = document.getElementById('modal-alert-close');
 
 modalAlert.addEventListener('click', (e) => {
-    if (e.target === modalAlert || e.target === modalCloseBtn) {
-        modalAlert.classList.remove('show')
-    }
-});
+  if (e.target === modalAlert || e.target === modalCloseBtn) {
+    modalAlert.classList.remove('show')
+  }
+})
 
+const infocCloseBtn = document.querySelector('.info-close');
+
+infocCloseBtn.addEventListener('click', (e) => {
+  modalInfo.classList.remove('show')
+})
 
 
 
