@@ -79,6 +79,11 @@ section {
   margin-right: 14px;
 }
 
+form {
+  display: flex;
+  margin-top: 30px;
+}
+
 .result-zone {
   margin-top: 30px;
   font-size: 20px;
@@ -88,7 +93,32 @@ section {
   color: #fff;
 }
 
-form {
+
+.modal-alert {
+  display: none;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  margin-top: 30px;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  padding: 20px;
+  z-index: 9999;
+  text-align: center;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #FFF;
+}
+
+.show {
+  display: block;
+  opacity: 1;
 }
