@@ -12,54 +12,54 @@
 <body>
   <div id="container">
     <div class="inner">
-
-      <header>
-        <nav class="menu">
-          <div class="nav-info">💬 </div>
-          <div class="nav-restart">🔄</div>
-          <div class="nav-close">✖️</div>
-        </nav>
-      </header>
-  
-      <main>
-        <section>
-          <div class="answer-zone">
-            <img src="./asstes/Group 15.png" alt="ball-icon" class="ball-icon">
-            SCORE BOARD
-          </div>
-          <form>
-            <label for="question"></label>
-            <input type="number" id="question" name="question" min="0" max="9999" placeholder="4자리 숫자를 입력해주세요."class="input-zone" />
-            <button class="btn-zone">도전</button>
-          </form>
-          <div class="result-zone"></div>
-        </section>
-      </main>
-      
-      <div class="modal-alert">
-        <div class="modal-content">
-          <div class="modal-alert-title"></div>
-          <button id="modal-alert-close">닫기</button>
-        </div>
-      </div>
-
-      <div class="modal-info">
-        <div class="info-content">
-          <div class="info-title">
-            <div class="info-title-content">HOW TO PLAY 💫</div>
-            <div class="info-game-rule">총 10번의 기회동안 감춰진 네개의 숫자가 <br>무엇인지 맞추는 게임입니다.
-
-          <ul class="info-desc">
-            <li>📍 네자리 숫자와 위치가 모두 맞아야 성공입니다.</li><br>
-            <li>📍 숫자는 0부터 9까지 구성되어있으며, <br>각 숫자는 중복없이 한 번씩만 사용 가능합니다.</li><br>
-            <li>📍 숫자와 자리의 위치가 일치하면 스트라이크, <br>숫자는 일치하였으나 자리수가 다르면 볼입니다.</li><br>
-          </ul>
-          
-          <div class="info-close">STRAT THE GAME</div>
+      <div class="board">
+        <header>
+          <nav class="menu">
+            <div class="nav-info"><img src="./asstes/info-modal-icon.png" width="130px" /></div>
+            <div class="nav-restart"><img src="./asstes/nav-restart.png" width="63px"/></div>
+            <div class="nav-close">x</div>
+          </nav>
+        </header>
+    
+        <main>
+          <section>
+            <div class="answer-zone">
+              <img src="./asstes/Group 15.png" alt="ball-icon" class="ball-icon">
+              SCORE BOARD
+            </div>
+            <form>
+              <label for="question"></label>
+              <input type="number" id="question" name="question" min="0" max="9999" placeholder="4자리 숫자를 입력해주세요."class="input-zone" />
+              <button class="btn-zone">도전</button>
+            </form>
+            <div class="result-zone"></div>
+          </section>
+        </main>
+        
+        <div class="modal-alert">
+          <div class="modal-content">
+            <div class="modal-alert-title"></div>
+            <button id="modal-alert-close">닫기</button>
           </div>
         </div>
-      </div>
 
+        <div class="modal-info">
+          <div class="info-content">
+            <div class="info-title">
+              <div class="info-title-content">HOW TO PLAY 💫</div>
+              <div class="info-game-rule">총 10번의 기회동안 감춰진 네개의 숫자가 <br>무엇인지 맞추는 게임입니다.
+
+            <ul class="info-desc">
+              <li>📍 네자리 숫자와 위치가 모두 맞아야 성공입니다.</li><br>
+              <li>📍 숫자는 0부터 9까지 구성되어있으며, <br>각 숫자는 중복없이 한 번씩만 사용 가능합니다.</li><br>
+              <li>📍 숫자와 자리의 위치가 일치하면 스트라이크, <br>숫자는 일치하였으나 자리수가 다르면 볼입니다.</li><br>
+            </ul>
+            
+            <div class="info-close">START THE GAME</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

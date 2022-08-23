@@ -3,6 +3,7 @@ const $input = document.querySelector('.input-zone');
 const $result = document.querySelector('.result-zone');
 const $btn = document.querySelector('.btn-zone');
 
+
 let limit = 10;
 let digit = 4;
 let hit = 0;
@@ -12,6 +13,7 @@ let answer = [];
 function gameStart() {
   randomNum()
 }
+
 
 function randomNum() {
   let num = []
@@ -29,8 +31,8 @@ function randomNum() {
 
 
 // 시도 횟수 및 사용자 입력숫자 알림
-function onHit(inputNumber) {
-  return `<span>${hit}차 </span><img src="./asstes/baseball-player.png" width="19px" height="19px"/> ${inputNumber}`
+function onHit(inputNumber,setRun) {
+  return `<span style="color:aqua">${hit}차</span><img src="./asstes/baseball-player.png" width="19px" height="19px"/> &emsp; &emsp; ${inputNumber} ${setRun}`
 }
 
 // 중복 숫자 확인
@@ -43,7 +45,7 @@ const modalAlert = document.querySelector('.modal-content');
 const titleAlert = document.querySelector('.modal-alert-title');
 
 function showAlert(alertMsg) {
-  titleAlert.innerHTML = `<span>📢 ${alertMsg}</span>`
+  titleAlert.innerHTML = `<span style="color: #33cc33">📢 ${alertMsg}</span>`
 
   modalAlert.classList.add('show')
 }
@@ -66,7 +68,7 @@ function getStrike(inputNumber, random) {
   return strike
 }
 
-//BALL
+// BALL
 
 function getBall(inputNumber, random) {
   let ball = 0
@@ -80,6 +82,24 @@ function getBall(inputNumber, random) {
   }
   return ball
 }
+
+// result 출력
+function setRun(inputNumber,random) {
+
+  if (isCorrect(inputNumber,random)) {
+    end = true
+    return 'HOME RUN'
+  }
+  
+
+  const strike = getStrike(inputNumber, random)
+  const ball = getBall(inputNumber, random)
+
+  return strike + 'STRIKE' + ball + 'BALL'
+}
+
+
+
 
 function initGame(e) {
   e.preventDefault()
@@ -98,7 +118,8 @@ function initGame(e) {
     showAlert('중복된 숫자가 있습니다.<br></br>')
   } else  if(inputNumber !== random) {
     hit++
-    $result.innerHTML += `<br><span>${onHit(inputNumber)} STRIKE: ${getStrike(inputNumber, random)} BALL: ${getBall(inputNumber,random)}</span></br>`
+    const output = onHit(inputNumber,setRun(inputNumber,random))
+    $result.innerHTML += `<br><span>${output}</span>`
     
     if (limit <= hit && !isCorrect(inputNumber, random)) {
       showAlert('쓰리아웃!')
@@ -108,9 +129,6 @@ function initGame(e) {
 
   $input.value = ''
   $input.focus()
-
-
-  
 }
 
 // info-modal창 열기
@@ -120,9 +138,6 @@ const modalInfo = document.querySelector('.modal-info')
 navinfo.addEventListener('click', () => {
   modalInfo.classList.add('show')
 })
-
-
-
 
 // alert창 닫기
 const modalCloseBtn = document.getElementById('modal-alert-close');
@@ -139,6 +154,12 @@ infocCloseBtn.addEventListener('click', (e) => {
   modalInfo.classList.remove('show')
 })
 
+// 게임 다시 시작
+const reStartBtn = document.querySelector('.nav-restart');
+
+reStartBtn.addEventListener('click', () => {
+  window.location.reload()
+})
 
 
 $btn.addEventListener('click', initGame)
