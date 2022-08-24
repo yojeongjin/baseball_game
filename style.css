@@ -114,10 +114,31 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
-.answer-zone .ball-icon {
+.notice-zone {
   position: absolute;
-  top: -50px;
-  left: 120px;
+  top: 13px;
+  display: flex;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 600;
+  background: linear-gradient(to bottom, #f0e903ed, #f74c02);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: motion 0.2s linear 0s infinite alternate; margin-top: 0;
+  display: none;
+}
+        
+@keyframes motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 10px;}
+}
+
+
+
+
+.ball-icon {
+  position: absolute;
+  top: -38px;
   border: 2px solid rgb(79, 28, 79);
   border-radius: 50%;
   z-index: 5;
@@ -134,7 +155,7 @@ form::after {
   position: absolute;
   display: inline;
   width: 123%;
-  border-top: 1px solid gray;
+  border-top: 1px solid rgb(108, 102, 102);
   top: -35px;
   left: -35px;
 }
@@ -278,4 +299,8 @@ li {
 .show {
   display: block;
   opacity: 1;
+}
+
+.is-show {
+  display: none;
 }

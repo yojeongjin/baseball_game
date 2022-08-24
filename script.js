@@ -1,4 +1,5 @@
 const $answer = document.querySelector('.answer-zone');
+const $notice = document.querySelector('.notice-zone');
 const $input = document.querySelector('.input-zone');
 const $result = document.querySelector('.result-zone');
 const $btn = document.querySelector('.btn-zone');
@@ -32,7 +33,7 @@ function randomNum() {
 
 // 시도 횟수 및 사용자 입력숫자 알림
 function onHit(inputNumber,setRun) {
-  return `<span style="color:aqua">${hit}차</span><img src="./asstes/baseball-player.png" width="19px" height="19px"/> &emsp; &emsp; ${inputNumber} ${setRun}`
+  return `<span style="color:aqua">${hit}차</span><img src="./asstes/baseball-player.png" width="19px" height="19px"/> &emsp; ${inputNumber} &emsp; ${setRun}`
 }
 
 // 중복 숫자 확인
@@ -84,18 +85,20 @@ function getBall(inputNumber, random) {
 }
 
 // result 출력
-function setRun(inputNumber,random) {
-
-  if (isCorrect(inputNumber,random)) {
+function setRun(inputNumber, random) {
+  
+  if (isCorrect(inputNumber, random)) {
     end = true
+    $answer.classList.add('is-show')
+    $notice.classList.add('show')
+
     return 'HOME RUN'
   }
   
-
   const strike = getStrike(inputNumber, random)
   const ball = getBall(inputNumber, random)
 
-  return strike + 'STRIKE' + ball + 'BALL'
+  return strike + '  '+ 'STRIKE' + '  '+ ball + '  '+ 'BALL'
 }
 
 
@@ -111,12 +114,12 @@ function initGame(e) {
   const inputNumber = $input.value
   const random = answer[0].toString()
   console.log(random)
-
+  isCorrect(inputNumber, random)
   if (inputNumber.length !== digit) { 
     showAlert(`${digit}자리 숫자를 입력해주세요.<br></br>`)
   } else if (isDuplicate(inputNumber)) {
     showAlert('중복된 숫자가 있습니다.<br></br>')
-  } else  if(inputNumber !== random) {
+  } else {
     hit++
     const output = onHit(inputNumber,setRun(inputNumber,random))
     $result.innerHTML += `<br><span>${output}</span>`
