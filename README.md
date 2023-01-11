@@ -111,8 +111,7 @@ function getBall(inputNumber, random) {
 
 ```indexOf()``` 메소드를 이용하여 사용자가 입력한 값이 정답 배열 내에는 있으나 인덱스가 일치하지않으면 볼로 처리하였습니다.
 
-
-
+---
 
 # 마치는 글
 
