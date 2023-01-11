@@ -12,9 +12,22 @@
 
 # ⚾️ 숫자 야구 게임
 
-### 1. 순서도 그리기
+### 1. 순서도
 
-### 2. 네 자리 숫자만 입력이 가능하도록 구현
+### 2. 중복되지 않은 네 자리 숫자만 입력이 가능하도록 구현
 
 
+```JavaScript
+
+...
+ 
+if (inputNumber.length !== digit) { 
+    showAlert(`${digit}자리 숫자를 입력해주세요.<br></br>`)
+  } else if (isDuplicate(inputNumber)) {
+    showAlert('중복된 숫자가 있습니다.<br></br>')
+  } 
+  
+...
+
+```
 
