@@ -8,13 +8,12 @@
   * https://resilient-beijinho-df5191.netlify.app/
   
 # 🛠 사용기술
-뱃지 뱃지 뱃지 뱃지
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=plastic&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS-1F8ACB?style=plastic&logo=css3&logoColor=white" /> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=plastic&logo=JavaScript&logoColor=fff" /> <img src="https://img.shields.io/badge/Netlify-00C7B7?style=plastic&logo=Netlify&logoColor=fff" />
+
 
 # ⚾️ 숫자 야구 게임
 
-### 1. 순서도
-
-### 2. 랜덤한 네자리 수 제공하기
+### 1. 랜덤한 네자리 수 제공하기
 
 ```JavaScript
 let answer = []
@@ -42,7 +41,7 @@ Math.random() * 10 의 결과는 0 ~ 9.99999... 이기 때문에 ```parseInt```�
 
 random 배열을 ```slice```를 이용하여 네자리로 만들고 만들어진 네자리 숫자를 함수밖에 선언된 answer 배열에 넣어주었습니다.
 
-### 3. 중복되지 않은 네 자리 숫자만 입력이 가능하도록 구현
+### 2. 중복되지 않은 네 자리 숫자만 입력이 가능하도록 구현
 
 
 ```JavaScript
@@ -70,10 +69,10 @@ if (inputNumber.length !== digit) {
 
 ```Set```의 자릿수가 digit(4자리)보다 작다면 중복 값이 있다는 뜻이므로 중복 값이 있는 것으로 판단하였습니다.
 
-### 4. 스트라이크 / 볼 판단하기
+### 3. 스트라이크 / 볼 판단하기
 
 
-#### 4-1 스트라이크
+#### 3-1 스트라이크
 
 ```JavaScript
 function getStrike(inputNumber, random) {
@@ -91,7 +90,7 @@ function getStrike(inputNumber, random) {
 
 사용자가 입력한 값의 배열을 ```map``` 돌면서 정답의 인덱스와 사용자가 입력한 입력값의 인덱스가 일치하면 스트라이크로 처리하였습니다.
 
-#### 4-2 볼
+#### 3-2 볼
 
 ```JavaScript
 function getBall(inputNumber, random) {
