@@ -46,7 +46,6 @@
 
 .board {
   width: 800px;
-  /* height: 550px; */
   background: #000;
   padding: 40px 40px;
   border-radius: 35px;
@@ -185,6 +184,7 @@ margin-top: 30px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .record-zone .record--table tbody th {
   width: 7%;
 }
@@ -205,7 +205,8 @@ margin-top: 30px;
 }
 
 /* 모달 */
-.modal-content {
+.modal-content,
+.modal-info {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -218,16 +219,24 @@ margin-top: 30px;
   max-width: 300px;
   height: auto;
   padding: 20px;
-  z-index: 9999;
+  z-index: 99;
   text-align: center;
   border: 1px solid #333;
   border-radius: 5px;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 5px 5px;
 }
 
+.modal-info {
+  max-width: 350px;
+  height: 430px;
+  box-shadow: 0px 0px;
+  background: url(/asstes/4F0FF3B3-A462-40FE-A146-4C825064163B.JPEG);
+}
+
+
 #modal-alert-close {
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 9px;
   box-sizing: border-box;
   font-size: 14px;
@@ -246,28 +255,7 @@ margin-top: 30px;
   transition: transform 0.5;
 }
 
-.modal-info {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 400px;
-  height: 430px;
-  padding: 20px;
-  z-index: 9999;
-  text-align: center;
-  border: 1px solid #333;
-  border-radius: 5px;
-  background-color: #FFF;
-  background: url(/asstes/4F0FF3B3-A462-40FE-A146-4C825064163B.JPEG);
-}
-
-.info-title-content {
+.title__content {
   font-size: 25px;
   color: rgb(83, 244, 19);
   padding: 10px 10px;
@@ -275,7 +263,7 @@ margin-top: 30px;
   border-bottom: 1px solid gray;
 }
 
-.info-game-rule{
+.title__rule{
   margin-top: 25px;
   color: aqua;
   line-height: 1.2;
@@ -304,10 +292,76 @@ li {
 }
 
 .show {
-  display: block;
-  opacity: 1;
+  display: block !important;
 }
 
-.is-show {
+.blink {
+  animation: blinkingEffect 400ms 5 alternate;
+}
+
+.notice-zone,
+.game-over {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
   display: none;
+}
+
+.game-over img,
+.notice-zone img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100px;
+  bottom:0;
+  margin: auto;
+  animation: motion 0.3s linear 0s infinite alternate;
+
+}
+@keyframes motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 20px;}
+}
+
+@keyframes blinkingEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+@media screen and (max-width: 767px) {
+  #container {
+    width: 100vw;
+    height: 100vh;
+  }
+  .inner {
+    width: 380px;
+  }
+  .board {
+    width: 75%;
+  }
+  .answer-zone {
+    font-size: 25px;
+  }
+
+  .ground .ground-form .input-wrapper {
+    width: 70%;
+  }
+  .record-zone .record--table th {
+    font-size: 20px;
+  }
+  .record-zone .record--table tbody td {
+    font-size: 25px;
+  }
+  .record-zone .record--table .tabledata__element {
+    font-size: 10px ;
+  }
+  .modal-content,
+  .modal-info {
+    width: 350px;
+  }
+
 }

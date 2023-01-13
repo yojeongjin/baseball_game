@@ -1,4 +1,3 @@
-const $answer = document.querySelector('.answer-zone');
 const $notice = document.querySelector('.notice-zone');
 const $result = document.querySelector('.result-zone');
 const $btn = document.querySelector('.form__button');
@@ -8,6 +7,9 @@ const $trSecond = document.querySelector('.tablerow-second');
 const $trThird = document.querySelector('.tablerow-third');
 const $strike = document.getElementsByClassName('tablerow-second')[0];
 const $ball = document.getElementsByClassName('tablerow-third')[0];
+const reStartBtn = document.querySelector('.restart');
+const $overNotice = document.querySelector('.game-over')
+
 
 let limit = 9;
 let digit = 4;
@@ -40,49 +42,6 @@ const num2 = document.getElementById('num2')
 const num3 = document.getElementById('num3')
 const num4 = document.getElementById('num4')
 
-form.addEventListener('keyup', function(e) {
-  if(end === true) {
-    return
-  }
-  
-  if (isModal === true) {
-    let timer = setTimeout(() => {
-      isModal = false
-    },10)
-  }
-
-  const regExp = /[^0-9]/g;
-
-  if (regExp.test(e.target.value)) {
-      e.target.value = "";
-  }
-
-  if(e.target.value.length === 1 && e.target.nextElementSibling) {
-    e.target.nextElementSibling.focus()
-  }
-
-  if(e.code === 'Enter' && isModal === false) {
-    checkInput()
-    console.log(hit, limit)
-  }
-})
-
-$btn.addEventListener('click', checkInput)
-
-function checkInput() {
-  const inputNumber = [num1.value, num2.value, num3.value, num4.value].join('')
-
-  if (inputNumber.length !== digit) { 
-    isModal = true;
-    return showAlert(`${digit}자리 숫자를 입력해주세요.`)
-  } else if (isDuplicate(inputNumber)) {
-    isModal = true;
-    return showAlert('중복된 숫자가 있습니다.')
-  } 
-
-  checkResult()
-}
-
 // 시도 횟수 및 사용자 입력숫자 알림
 function onHit(inputNumber,setRun) {
   return `
@@ -94,25 +53,11 @@ function isDuplicate(inputNumber) {
   return [...new Set(inputNumber.split(''))].length !== digit
 }
 
-// alert 메시지 출력 
-const modalAlert = document.querySelector('.modal-content');
-const titleAlert = document.querySelector('.modal-alert-title');
-
-function showAlert(alertMsg) {
-  titleAlert.innerHTML = `<span style="color: #33cc33">📢 ${alertMsg}</span>`
-
-  modalAlert.classList.add('show')
-
-  for (let i=0; i < digit; i++) {
-    $formInput[i].value = ''
-  }
-  num1.focus()
-}
-
 // 유효성 확인 
 function isCorrect(inputNumber, random) {
   return inputNumber === random
 }
+
 
 // STRIKE
 function getStrike(inputNumber, random) {
@@ -144,26 +89,80 @@ function getBall(inputNumber, random) {
 
 // result 출력
 function setRun(inputNumber, random) {
-  
-  if (isCorrect(inputNumber, random)) {
-    end = true
-    $answer.classList.add('is-show')
-    $notice.classList.add('show')
-
-    return 'HOME RUN'
-  }
-  
   const strike = getStrike(inputNumber, random)
   const ball = getBall(inputNumber, random)
 
   return 'STRIKE' + '  ' + strike + '  '+ 'BALL'+ '  ' + ball 
 }
 
+form.addEventListener('keyup', function(e) {
+  if(end === true) {
+    return
+  }
+  
+  if (isModal === true) {
+    setTimeout(() => {
+      isModal = false
+    },10)
+  }
+
+  const regExp = /[^0-9]/g;
+
+  if (regExp.test(e.target.value)) {
+      e.target.value = "";
+  }
+
+  if(e.target.value.length === 1 && e.target.nextElementSibling) {
+    e.target.nextElementSibling.focus()
+  }
+
+  if(e.code === 'Enter' && isModal === false) {
+    checkInput()
+
+  }
+})
+
+$btn.addEventListener('click', checkInput)
+
+function checkInput() {
+  const inputNumber = [num1.value, num2.value, num3.value, num4.value].join('')
+
+  if (inputNumber.length !== digit) { 
+    isModal = true;
+    return showAlert(`${digit}자리 숫자를 입력해주세요.`)
+  } else if (isDuplicate(inputNumber)) {
+    isModal = true;
+    return showAlert('중복된 숫자가 있습니다.')
+  } 
+
+  checkResult()
+}
 
 function checkResult() {
+  if(end === true) {
+    return
+  }
+
   const inputNumber = [num1.value, num2.value, num3.value, num4.value].join('')
   const random = answer[0].toString()
 
+  if(isCorrect(inputNumber,random)){
+
+    $notice.classList.add('show')
+    setTimeout(() => {
+      $notice.classList.remove('show')
+      reStartBtn.classList.add('blink')
+    },1500)
+    end === true
+
+    return
+
+  } else {
+    nextStage(inputNumber,random)
+  }
+}
+
+function nextStage(inputNumber,random) {
   if(end === true) {
     return
   }
@@ -172,13 +171,15 @@ function checkResult() {
   const ball = getBall(inputNumber, random)
 
   const output = onHit(inputNumber,setRun(inputNumber,random))
+  
   $result.innerHTML += `<span>${output}</span>`
   $strike.getElementsByTagName("td")[`${hit}`].innerHTML = `<td>${strike}</td>`
   $ball.getElementsByTagName("td")[`${hit}`].innerHTML = `<td>${ball}</td>` 
 
   if (limit <= hit && !isCorrect(inputNumber, random)) {
     end = true
-    return showAlert('쓰리아웃!')
+    gameOver()
+    return
   }
 
   for (let i=0; i < digit; i++) {
@@ -187,8 +188,34 @@ function checkResult() {
   num1.focus()
 }
 
+function gameOver() {
+  $overNotice.classList.add('show')
+  setTimeout(() => {
+    $overNotice.classList.remove('show')
+    reStartBtn.classList.add('blink')
+  },1500)
+  end === true
+
+  return
+}
+
+// alert 메시지 출력 
+const modalAlert = document.querySelector('.modal-content');
+const titleAlert = document.querySelector('.modal-alert-title');
+
+function showAlert(alertMsg) {
+  titleAlert.innerHTML = `<span style="color: #33cc33">📢 ${alertMsg}</span>`
+
+  modalAlert.classList.add('show')
+
+  for (let i=0; i < digit; i++) {
+    $formInput[i].value = ''
+  }
+  num1.focus()
+}
+
 // info-modal창 열기
-const navinfo = document.querySelector('.nav-info');
+const navinfo = document.querySelector('.info');
 const modalInfo = document.querySelector('.modal-info')
 
 navinfo.addEventListener('click', () => {
@@ -211,8 +238,6 @@ infocCloseBtn.addEventListener('click', () => {
 })
 
 // 게임 다시 시작
-const reStartBtn = document.querySelector('.nav-restart');
-
 reStartBtn.addEventListener('click', () => {
   window.location.reload()
 })
@@ -239,4 +264,5 @@ document.addEventListener('keydown', (e) => {
 window.onload = () => {
   gameStart()
   settingTr()
+  console.log(answer)
 }

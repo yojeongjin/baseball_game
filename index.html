@@ -17,13 +17,13 @@
 
         <header>
           <div class="menu">
-            <div class="menu-item nav-info">
+            <div class="menu-item info">
               <span class="material-icons">
                 info
               </span>
             </div>
             <div class="answer-zone">SCORE BOARD</div>
-            <div class="menu-item nav-restart">
+            <div class="menu-item restart">
               <span class="material-icons">
                 restart_alt
               </span>
@@ -32,8 +32,6 @@
         </header>
     
         <main>
-            <!-- <div class="notice-zone">HOME RUN!! 🤸‍♀️</div> -->
-
           <div class="record-zone">
             <table class="record--table">
               <tr class="tablerow-first">
@@ -49,35 +47,8 @@
           </div>
           <div class="result-zone">
           </div>
-
         </main>
-
-        <!-- modal -->
-        <div class="modal-alert">
-          <div class="modal-content">
-            <div class="modal-alert-title"></div>
-            <button id="modal-alert-close">닫기</button>
-          </div>
-        </div>
-
-        <div class="modal-info">
-          <div class="info-content">
-            <div class="info-title">
-              <div class="info-title-content">HOW TO PLAY</div>
-              <div class="info-game-rule">총 9번의 기회동안 감춰진 네개의 숫자가 <br>무엇인지 맞추는 게임입니다.
-
-            <ul class="info-desc">
-              <li>📍 네자리 숫자와 위치가 모두 맞아야 성공입니다.</li><br>
-              <li>📍 숫자는 0부터 9까지 구성되어있으며, <br>각 숫자는 중복없이 한 번씩만 사용 가능합니다.</li><br>
-              <li>📍 숫자와 자리의 위치가 일치하면 스트라이크, <br>숫자는 일치하였으나 자리수가 다르면 볼입니다.</li><br>
-            </ul>
-            
-            <div class="info-close">Game Start🕹</div>
-            </div>
-          </div>
-        </div>
       </div>
-          <!-- modal 끝 -->
 
       <div class="ground">
         <form action="#" method="get" id="bat-form" name="bat-form" class="ground-form" autocomplete="off">
@@ -92,8 +63,41 @@
             </button>
         </form>
       </div>
-    </div>
 
+      <!-- modal -->
+      <div class="modal-alert">
+        <div class="modal-content">
+          <div class="modal-alert-title"></div>
+          <button id="modal-alert-close">닫기</button>
+        </div>
+      </div>
+
+      <div class="modal-info">
+        <div class="info-content">
+          <div class="info-title">
+            <div class="title__content">HOW TO PLAY</div>
+            <div class="title__rule">총 9번의 기회동안 감춰진 네개의 숫자가 <br>무엇인지 맞추는 게임입니다.</div>
+
+              <ul class="info-desc">
+                <li>📍 네자리 숫자와 위치가 모두 맞아야 성공입니다.</li><br>
+                <li>📍 숫자는 0부터 9까지 구성되어있으며, <br>각 숫자는 중복없이 한 번씩만 사용 가능합니다.</li><br>
+                <li>📍 숫자와 자리의 위치가 일치하면 스트라이크, <br>숫자는 일치하였으나 자리수가 다르면 볼입니다.</li><br>
+              </ul>
+          
+              <div class="info-close">Game Start🕹</div>
+          </div>
+        </div>
+      </div>
+      <!-- modal 끝 -->
+      <div class="notice-zone">
+        <img src="./asstes/homerun.png" alt="홈런" />
+      </div>
+
+      <div class="game-over">
+        <img src="./asstes//gameover.png" alt="게임종료" />
+      </div>
+
+    </div>
   </div>
   <script src="script.js"></script>  
 </body>
