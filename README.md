@@ -8,6 +8,7 @@
   * 기획과 디자인이 코드를 만나 어떻게 동적으로 변화하는지에 대해 학습하기 위하여 진행
 * 데모페이지
   * https://resilient-beijinho-df5191.netlify.app/
+  (📱 모바일 환경 제공)
   
 # 🛠 사용기술
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=plastic&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS-1F8ACB?style=plastic&logo=css3&logoColor=white" /> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=plastic&logo=JavaScript&logoColor=fff" /> <img src="https://img.shields.io/badge/Netlify-00C7B7?style=plastic&logo=Netlify&logoColor=fff" />
